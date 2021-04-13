@@ -8,37 +8,130 @@
 
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  grid-gap: 5px;
 }
 
 /* Header */
 .header{
   grid-area: header;
 
-  background-color: green;
+  background-color: #FF9400;
+
+  position: relative;
 }
 
 
 .header img{
   height: 100%;
+
+  position: absolute;
+  left: 8%;
 }
 
 /* Nav */
 .nav{
   grid-area: nav;
 
-  background-color: rgb(51, 233, 193);
+  background-color: #1D1AB2;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.nav_link{
+  text-decoration: none;
+  color: #FFD900;
+
+  transition: color .2s;
+
+  margin-bottom: 20px;
+
+  position: relative;
+}
+
+.nav_link:hover{
+  color: #FF9400;
+}
+
+.nav_link:after{
+  content: "";
+  display: block;
+  position: absolute;
+
+  width: 100%;
+  height: 3px;
+  background: #FF9400;
+
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  margin-top: 3px;
+
+  opacity: 0;
+  transition: opacity .2s ;
+}
+
+.nav_link:hover:after{
+  opacity: 1;
 }
 
 /* Contant */
 .contant{
   grid-area: contant;
 
-  background-color: rgb(226, 180, 94);
+  background-color: #00AE68;
 }
 
-.contant img {
+.contant_main{
+  padding: 50px;
+}
 
-   width: 100%;
-   height: 30%;
+/* Profile */
+
+.contant_header{
+
+  background: url('https://static.tildacdn.com/tild6234-3134-4339-a637-623532346238/Untitled_30.png') center no-repeat;
+  background-size: cover;
+
+  height: 200px;
+}
+
+.profile_contant{
+  position: relative;
+
+  padding: 50px 230px;
+}
+
+.ava{
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+}
+
+.photo_ava{
+  border-radius: 50%;
+
+  width: 150px;
+  height: 150px;
+}
+
+/* Post */
+.input_post{
+  width: 100%;
+  background: #999;
+  height: 40px;
+  opacity: 0.9;
+}
+
+.add_post{
+  position: relative;
+}
+
+.post_button{
+  position: absolute;
+
+  bottom: 0;
+  right: 40px;
 }

@@ -1,0 +1,23 @@
+.application{
+    margin-top: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 3px;
+}
+
+.item__application{
+    background-color: brown;
+    border-radius: 7px;
+    border: solid black 3px;
+
+    transition: .3s;
+
+    text-align: center;
+}
+
+.item__application:hover{
+    background-color: rgb(155, 106, 106);
+    border-color: blanchedalmond;
+}

@@ -1,0 +1,10 @@
+/* Contant */
+.contant{
+    grid-area: contant;
+  
+    background-color: #00AE68;
+  }
+  
+  .contant_main{
+    padding: 50px;
+  }

@@ -1,0 +1,15 @@
+.header{
+    grid-area: header;
+  
+    background-color: #FF9400;
+  
+    position: relative;
+  }
+  
+  
+  .header__img{
+    height: 100%;
+  
+    position: absolute;
+    left: 8%;
+  }

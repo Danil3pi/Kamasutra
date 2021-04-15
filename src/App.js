@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 
-import Header from './components/Header';
-import Nav from './components/Nav';
-import ProfileContant from './components/ProfileContant';
+import Header from './components/Header/Header';
+import Nav from './components/Nav/Nav';
+import ProfileContant from './components/ProfileContant/ProfileContant';
 
 
 const App = () => {

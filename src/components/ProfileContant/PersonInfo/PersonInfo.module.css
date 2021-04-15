@@ -1,0 +1,21 @@
+/* Profile */
+  
+.profile_contant{
+    position: relative;
+  
+    padding: 50px 230px;
+  }
+  
+  .ava{
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+  }
+  
+  .ava img{
+    border-radius: 50%;
+  
+    width: 150px;
+    height: 150px;
+  }

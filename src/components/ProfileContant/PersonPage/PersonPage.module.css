@@ -27,3 +27,11 @@
     width: 150px;
     height: 150px;
   }
+
+textarea{
+  width: 50%;
+}
+
+.button{
+  height: 70px;
+}

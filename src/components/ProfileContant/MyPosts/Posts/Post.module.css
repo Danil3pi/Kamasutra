@@ -1,0 +1,20 @@
+
+.post{
+  background-color: rgb(221, 234, 236);
+  width: 50vw;
+
+  border: solid black 2px;
+  border-radius: 7px;
+
+  margin: 5px;
+
+  padding: 2px 10px;  
+}
+
+.post img{
+  width: 15px;
+}
+
+.post button{
+  border-radius: 50%;
+}

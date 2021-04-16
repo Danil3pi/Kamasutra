@@ -9,8 +9,8 @@ const PersonPage = () => {
         <div className={styles.contant_main}>
 
             <PersonInfo />
-            <MyPosts />
-            <MyPosts />
+            <textarea></textarea>
+            <button className={styles.button}>Add Post</button>
             <MyPosts />
         </div>
     );

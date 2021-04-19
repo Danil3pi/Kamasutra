@@ -1,15 +1,16 @@
 .header{
     grid-area: header;
   
-    background-color: #FF9400;
-  
-    position: relative;
+    background-color: #006ba1;
+    height: auto;
+
+    padding-left: 70px;
   }
   
   
   .header__img{
-    height: 100%;
-  
-    position: absolute;
-    left: 8%;
+    height: 70px;
+    width: auto;
+    vertical-align: bottom;
+    max-width: none;
   }

@@ -1,4 +1,56 @@
-.main{
+.mainDialogWindow{
     background-color: blanchedalmond;
     height: 100vh;
+
+    display: grid;
+    grid-template-columns: 2fr 4fr; 
+}
+
+.dialogList{
+    background-color: blueviolet;
+}
+
+.someDialog{
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(87, 27, 27);
+}
+
+.dialogWith{
+    width: 55%;
+    height: 60px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 30px;
+
+    border: solid black 1px;
+    border-radius: 9px;
+
+
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+
+    background-color: #fff;
+}
+
+.dialogWith img{
+    width: 50px;
+}
+
+.sms{
+    font-size: 30px;
+    width: 50%;
+
+    border-radius: 10px;
+    background-color: #fff;
+
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px
+}
+
+.sms.answer{
+    align-self: flex-end;
 }

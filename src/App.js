@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import ProfileContant from './components/ProfileContant/ProfileContant';
 import Dialogs from './components/Dialogs/Dialogs.jsx';
+import News from './components/News/News.jsx';
 import { BrowserRouter, Route } from 'react-router-dom'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Nav />
         <Route path='/profile' component={ProfileContant} />
         <Route path='/dialogs' component={Dialogs} />
+        <Route path='/news' component={News} />
       </div>
     </BrowserRouter>
   );

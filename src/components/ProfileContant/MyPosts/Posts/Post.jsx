@@ -7,7 +7,7 @@ const Post = (props) => {
         <div className = {styles.post}>
             <div>{props.message}</div>
             <div >
-                <button><img class="icone" src='https://www.flaticon.com/svg/vstatic/svg/833/833472.svg?token=exp=1618545127~hmac=b27be2fea04c4dc4ac7d225f6ad71aa5' /></button>
+                <button><img src='https://im0-tub-ru.yandex.net/i?id=aa6332ad06608319e37ec717fd8d35f7&n=13' /></button>
                 {props.likes_count}
             </div>
         </div>

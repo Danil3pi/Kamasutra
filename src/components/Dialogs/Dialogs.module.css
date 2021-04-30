@@ -32,10 +32,22 @@
     grid-template-columns: 2fr 3fr;
 
     background-color: #fff;
+
+    text-decoration: none;
+    color: black;
+
+    transition: .3s;
 }
+
+.dialogWith:hover{
+    color: white;
+    background-color: rgb(230, 212, 56);
+}
+
 
 .dialogWith img{
     width: 50px;
+    border-radius: 50%;
 }
 
 .sms{

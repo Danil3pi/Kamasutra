@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './PersonInfo.module.css';
 
-
-const PersonInfo = () => {
+// Значит можно сделать разные страницы и с помощью маршрутизации добиться перехода между этими страницами,
+// Нажимая на фотографии в диалогах, чтобы на этой странице была другая аватарка
+// Другие посты и так далее
+const PersonInfo = (props) => {
     return (
         <div className={styles.profile_contant}>
 

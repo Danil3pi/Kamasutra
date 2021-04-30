@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './ProfileContant.module.css';
-//import './ProfileContant.module.css';
 
 import PersonPage from './PersonPage/PersonPage.jsx'
 
 //Интересно можно ли обойтись без PesonPage и просто здесь разместить все компоненты
-const ProfileContant = () => {
+const ProfileContant = (props) => {
+    //debugger;
     return (
         <div className={styles.contant}>
             <div className={styles.contant_header}></div>
-
-            <PersonPage />
+            <PersonPage profileData={props.profileData} 
+                        addPost={props.addPost} 
+                        updatePostText={props.updatePostText}/>
         </div>
     );
 };

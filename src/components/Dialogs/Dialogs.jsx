@@ -1,55 +1,42 @@
 
-import styles from './Dialogs.module.css'
+import styles from './Dialogs.module.css';
+import Anton from './AntonDialog/AntonDialog.jsx';
+import Max from './MaxDialog/MaxDialog.jsx';
+import Diman from './DimanDialog/DimanDialog.jsx';
 
+import { Link, Route, BrowserRouter } from 'react-router-dom';
+
+
+//Если прописать BrowserRouter перед Route, то смены е будет и будет просто отображать пустая страница
+// А ткак нормаьно!
+
+const DialogItem = (props) => {
+    return (
+        <div className={styles.dialogList}>
+            <Link to={"/dialogs" + props.to} className={styles.dialogWith}>
+                <img src={props.ava} />
+                {props.name}
+            </Link>
+        </div>
+    );
+}
 
 const Dialogs = (props) => {
+
+    let DialogItems = props.state.dialogs.map(dialog => (<DialogItem to={dialog.id} name={dialog.name} ava={dialog.ava}></DialogItem>))
+
     return (
         <div className={styles.mainDialogWindow}>
-            <div className={styles.dialogList}>
-                <div className={styles.dialogWith}>
-                    <img src="https://clck.ru/UNMiH" />
-                    Anton
-                </div>
-                <div className={styles.dialogWith}>
-                <img src="https://clck.ru/UNMiX" />
-                    Diman
-                </div>
-                <div className={styles.dialogWith}>
-                    <img src="https://clck.ru/UNMio"/>
-                    Max
-                </div>
-                <div className={styles.dialogWith}>
-                    <img src="https://clck.ru/UNMjL"/>
-                    Travov
-                </div>
-                <div className={styles.dialogWith}>
-                    Vova
-                </div>
-            </div>
-
-
-            <div className={styles.someDialog}>
-                <div className={styles.sms}>
-                    Привет
+            <BrowserRouter>
+                <div className={styles.dialogList}>
+                    {DialogItems}
                 </div>
 
-                <div className={styles.sms}>
-                    Как дела?
-                 </div>
+                < Route path="/dialogs/Anton" component={Anton} />
+                < Route path="/dialogs/Max" component={Max} />
+                < Route path="/dialogs/Diman" component={Diman} />
 
-                <div className={styles.sms}>
-                    Что делаешь?
-                </div>
-
-                <div className={styles.sms + ' ' + styles.answer}>
-                    Привет
-                </div>
-
-                <div className={styles.sms + ' ' + styles.answer}>
-                    Нормально
-                </div>
-
-            </div>
+            </BrowserRouter>
         </div>
     )
 }

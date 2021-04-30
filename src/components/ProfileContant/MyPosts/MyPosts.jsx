@@ -5,10 +5,11 @@ import Post from './Posts/Post.jsx'
 
 const MyPosts = (props) => {
 
+    let postsArr = props.posts.map( post => <Post post={post}/>);
+
     return (
         <div className = {styles.myPosts}>
-            <Post message="How are you?" likes_count="12"/>
-            <Post message="Hello, world!" likes_count="12"/>
+            {postsArr}
         </div>
     );
 };

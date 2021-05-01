@@ -33,11 +33,16 @@ let state = {
     ],
 };
 
+
+window.state=state;
+
 export let addPost = () =>{
     let post = {
         message: state.ProfilePage.newPostText,
         likes_count: 0,
     };  
+
+    state.ProfilePage.newPostText = "";
 
     state.ProfilePage.posts.push(post);
 

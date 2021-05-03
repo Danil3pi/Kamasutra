@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './PersonPage.module.css';
 
-import PersonInfo from '../PersonInfo/PersonInfo.jsx'
-import MyPosts from '../MyPosts/MyPosts.jsx';
+import PersonInfo from './PersonInfo/PersonInfo.jsx'
+import MyPosts from './MyPosts/MyPosts.jsx';
 
 const PersonPage = (props) => {
     let newPost = React.createRef();

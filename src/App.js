@@ -7,21 +7,21 @@ import Dialogs from './components/Dialogs/Dialogs.jsx';
 import News from './components/News/News.jsx';
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import {addPost, updatePostText} from './redux/state.js'; // Если просто импортировать без dafault, то нужно записывать в фигурных скобках.
+// Ведь вся бизнес логика должна быть передана в index.js 
+//import {addPost, updatePostText} from './redux/state.js'; // Если просто импортировать без dafault, то нужно записывать в фигурных скобках.
 
 const App = (props) => {
-  //debugger;
-  
+  console.log('APP');
   return (
     <BrowserRouter>
       <div className="container">
         <div className="app-wrapper">
           <Header />
-          <Nav state={props.state}/>
+          <Nav state={props.state} />
           <Route exact path='/' component={News} />
           <Route path='/profile' render={ () => <ProfileContant profileData={props.state.ProfilePage} 
-                                                                addPost={addPost} 
-                                                                updatePostText={updatePostText} />} 
+                                                                addPost={props.addPost} 
+                                                                updatePostText={props.updatePostText} />} 
           />
           <Route path="/dialogs" render={() => <Dialogs state={props.state.DialogPage}/>} />
           <Route path='/news' component={News} />

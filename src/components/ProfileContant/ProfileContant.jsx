@@ -5,7 +5,7 @@ import PersonPage from './PersonPage/PersonPage.jsx'
 
 //Интересно можно ли обойтись без PesonPage и просто здесь разместить все компоненты
 const ProfileContant = (props) => {
-    //debugger;
+    
     return (
         <div className={styles.contant}>
             <div className={styles.contant_header}></div>

@@ -63,6 +63,10 @@
     padding: 10px
 }
 
+.incoming{
+    align-self: flex-start;
+}
+
 .sms.answer{
     align-self: flex-end;
 }

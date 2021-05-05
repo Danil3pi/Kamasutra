@@ -1,11 +1,10 @@
 
 import styles from './Dialogs.module.css';
-import Anton from './AntonDialog/AntonDialog.jsx';
-import Max from './MaxDialog/MaxDialog.jsx';
-import Diman from './DimanDialog/DimanDialog.jsx';
+import Anton from './DialogsWithFriends/AntonDialog/AntonDialog.jsx';
+import Max from './DialogsWithFriends/MaxDialog/MaxDialog.jsx';
+import Diman from './DialogsWithFriends/DimanDialog/DimanDialog.jsx';
 
 import { Link, Route, BrowserRouter } from 'react-router-dom';
-
 
 //Если прописать BrowserRouter перед Route, то смены е будет и будет просто отображать пустая страница
 // А ткак нормаьно!

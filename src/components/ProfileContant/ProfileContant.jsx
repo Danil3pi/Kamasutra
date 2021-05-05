@@ -10,8 +10,7 @@ const ProfileContant = (props) => {
         <div className={styles.contant}>
             <div className={styles.contant_header}></div>
             <PersonPage profileData={props.profileData} 
-                        addPost={props.addPost} 
-                        updatePostText={props.updatePostText}/>
+                        dispatch={props.dispatch}/>
         </div>
     );
 };

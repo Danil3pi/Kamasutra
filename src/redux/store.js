@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+
 let store = {
     // Privat variable
     _state : {
@@ -33,39 +36,49 @@ let store = {
     },
 
     getState(){
-        debugger; 
         return this._state;
     },
 
     _rerenderEntireTree(){
+        debugger;
         console.log('I\'m _rerenderEntireTree');
     },
 
-    addPost(){
-        debugger;
-        let post = {
-            message: this._state.ProfilePage.newPostText,
-            likes_count: 0,
-        };  
-    
-        this._state.ProfilePage.newPostText = "";
-    
-        this._state.ProfilePage.posts.push(post);
-    
-        this._rerenderEntireTree(this._state);
-    },
-    updatePostText(newPostText){
-        this._state.ProfilePage.newPostText = newPostText;
-        this._rerenderEntireTree(this.getState());
-    },
     publisher(observer){
         //А rerender становиться фунцией из index.js единожды? Или каждый раз вызывается при новой отрисовке?
         //console.log('publisher');
         this._rerenderEntireTree = observer;
+    },
+
+    dispatch(action){
+        debugger;
+        switch(action.type) {
+            case ADD_POST: {
+                if (this._state.ProfilePage.newPostText !== '') {
+                    let post = {
+                        message: this._state.ProfilePage.newPostText,
+                        likes_count: 0,
+                    };  
+                
+                    this._state.ProfilePage.newPostText = "";
+                
+                    this._state.ProfilePage.posts.push(post);
+                
+                    this._rerenderEntireTree(this._state);
+                }
+            }; break;
+
+            case UPDATE_POST_TEXT: {
+                this._state.ProfilePage.newPostText = action.newPostText;
+                this._rerenderEntireTree(this.getState());
+            }; break;
+
+        }
     }
 }
 
-
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updatePostTextActionCreator = (newPostText) =>({type: UPDATE_POST_TEXT, newPostText});
 
 window.store=store;
 

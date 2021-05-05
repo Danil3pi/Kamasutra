@@ -4,18 +4,18 @@ import styles from './PersonPage.module.css';
 import PersonInfo from './PersonInfo/PersonInfo.jsx'
 import MyPosts from './MyPosts/MyPosts.jsx';
 
+import {addPostActionCreator, updatePostTextActionCreator} from '../../../redux/store';
+ 
 const PersonPage = (props) => {
     let newPost = React.createRef();
 
     let addPost = () => {
-        props.addPost();
-        props.updatePostText('');
+        props.dispatch(addPostActionCreator());
     };
 
     let changeAreaText = () => { 
-        let postText = newPost.current.value;
-        //debugger;
-        props.updatePostText(postText);
+        let newPostText = newPost.current.value;
+        props.dispatch(updatePostTextActionCreator(newPostText));
     };
 
     return (

@@ -20,8 +20,7 @@ const App = (props) => {
           <Nav state={props.state} />
           <Route exact path='/' component={News} />
           <Route path='/profile' render={ () => <ProfileContant profileData={props.state.ProfilePage} 
-                                                                addPost={props.addPost} 
-                                                                updatePostText={props.updatePostText} />} 
+                                                                dispatch={props.dispatch} />} 
           />
           <Route path="/dialogs" render={() => <Dialogs state={props.state.DialogPage}/>} />
           <Route path='/news' component={News} />

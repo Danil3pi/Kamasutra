@@ -1,4 +1,4 @@
-import styles from '../Dialogs.module.css'
+import styles from '../../Dialogs.module.css'
 
 const AntonDialog = () => {
 

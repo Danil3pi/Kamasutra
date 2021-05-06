@@ -6,11 +6,11 @@ let store = {
     _state : {
         DialogPage: {
             dialogs: [
-                { id: "/Anton", name: "Anton", ava: "https://clck.ru/UNMiH" },
-                { id: "/Diman", name: "Diman", ava: "https://clck.ru/UNMiX" },
-                { id: "/Max", name: "Max", ava: "https://clck.ru/UNMio" },
-                { id: "/Travov", name: "Travov", ava: "https://clck.ru/UNMjL" },
-                { id: "/Vova", name: "Vova", ava: "https://clck.ru/UNMjL" },
+                { id: "Anton", name: "Anton", ava: "https://clck.ru/UNMiH" },
+                { id: "Diman", name: "Diman", ava: "https://clck.ru/UNMiX" },
+                { id: "Max", name: "Max", ava: "https://clck.ru/UNMio" },
+                { id: "Travov", name: "Travov", ava: "https://clck.ru/UNMjL" },
+                { id: "Vova", name: "Vova", ava: "https://clck.ru/UNMjL" },
             ],
         }, 
     

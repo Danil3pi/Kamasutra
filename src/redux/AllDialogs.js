@@ -1,4 +1,8 @@
-let Dialogs = {
+let allDialogs = {
+    Anton: {
+        
+    },
+
     Diman: [//Diman
         {text: 'САп, нига', class: 'incoming'}, 
         {text: 'Привет, пес', class: 'answer'},
@@ -20,7 +24,8 @@ let Dialogs = {
         {text: 'Го в мордовию', class: 'sms'},
         {text: 'Поеду заправлять', class: 'incoming'},
     ],
+
 };
 
 
-export default Dialogs;
+export default allDialogs;

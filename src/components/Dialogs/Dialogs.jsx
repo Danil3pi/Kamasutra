@@ -1,21 +1,54 @@
+import React from 'react';
+import { Link, Route, BrowserRouter, Router } from 'react-router-dom';
 
-import styles from './Dialogs.module.css';
+import styled from 'styled-components';
 
-
-import { Link, Route, BrowserRouter } from 'react-router-dom';
-
-import styled from 'styled-components'
+import { createActionTyping, createActionSendingMessage } from '../../redux/store'
 
 //Если прописать BrowserRouter перед Route, то смены е будет и будет просто отображать пустая страница
 // А ткак нормаьно!
 
+const DialigWithSmb = styled(Link)`
+    overflow: hidden;
+    
+    width: 55%;
+    height: 60px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 30px;
+
+    border: solid black 1px;
+    border-radius: 9px;
+
+
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+
+    background-color: #fff;
+
+    text-decoration: none;
+    color: black;
+
+    transition: .3s;
+
+    &:hover{
+        color: white;
+        background-color: rgb(230, 212, 56);
+    }
+
+    img{
+        width: 50px;
+        border-radius: 50%;
+    }
+`;
+
 const DialogItem = (props) => {
     return (
-        <div className={styles.dialogList}>
-            <Link to={"/dialogs/" + props.to} className={styles.dialogWith}>
+        <div>
+            <DialigWithSmb to={"/dialogs/" + props.to}>
                 <img src={props.ava} />
                 {props.name}
-            </Link>
+            </DialigWithSmb>
         </div>
     );
 };
@@ -27,7 +60,7 @@ const Message = styled.div`
     border-radius: 10px;
     background-color: #fff;
 
-    margin: 20px;
+    margin: 10px;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -43,55 +76,94 @@ const DialogColumn = styled.div`
     background-color: rgb(87, 27, 27);
 `;
 
-const SectionSentingMessage = styled.div`
+const MessageSentingSection = styled.div`
     display: flex;
+    width: 100%;
 `;
+
+const MainDialogWindow = styled.div`
+    background-color: blanchedalmond;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 2fr 4fr; 
+`;
+
+const DialogList = styled.div`
+    background-color: blueviolet;
+`;
+
 
 const Dialogs = (props) => {
 
     let DialogItems = props.state.dialogs.map(dialog => (<DialogItem to={dialog.id}
         name={dialog.name} ava={dialog.ava}></DialogItem>));
 
-    //     debugger;
-    // let Routs = Object.keys(props.dialogs);
-    //     alert(Routs);
-    let Routers = Object.keys(props.dialogs).map((item) => (
-        < Route path={`/dialogs/${item}`} component={() => (
-            props.dialogs[item].map((mess) => (
-                <Message messageType={mess.type}>{mess.text}</Message>
-            ))
-        )} />
-    ))
+    // let Routers = Object.keys(props.dialogs).map((item) => (
+    //     < Route path={`/dialogs/${item}`} render={() => (
+    //         props.dialogs[item].map((mess) => (
+    //             <Message messageType={mess.type}>{mess.text}</Message>
+    //         ))
+    //     )} />
+    // ))
+    //let Routers = [];
 
-    // const lastSlash = window.location.pathname.lastIndexOf('/');
-    // //alert(window.location.pathname, lastSlash);
+    // debugger;
+    // for (let item of props.state.dialogs) {
+    //     for ( let message of item['messages']) {
+    //         console.log(message);
+    //     }
+    // }
 
-    // const pathName = window.location.pathname
-    // const name = pathName.split('').splice(lastSlash + 1, window.location.pathname.length).join('');
-    // alert(name);
 
+    let Routs = props.state.dialogs.map((item, index) => (
+        <Route key={index} path={`/dialogs/${item.name}`} render={() =>(
+                item.messages.map((message) => (
+                    <Message messageType={message.type}>{message.text}</Message>))
+                )
+             } 
+        />
+    )); 
+
+    const getGeter = () => {
+        //Если на страниуе сообщений можно будет переходить еще на другие страницы, то это уже будет индекс не последненго слеша.
+        //И имя пользователя будет уже другое
+        let path = window.location.pathname;
+        const lastIndexSlash = path.lastIndexOf('/');
+
+        const friendName = path.split('').splice(lastIndexSlash + 1).join('');
+
+        return friendName;
+    }
+
+    const typingMessage = (event) => {
+        let newTextMessage = event.target.value;
+        props.dispatch(createActionTyping(newTextMessage));
+    }
+
+    const sendMessage = () => {
+        const friend = getGeter();
+        props.dispatch(createActionSendingMessage(friend))
+    }
     return (
-        <div className={styles.mainDialogWindow}>
+        <MainDialogWindow>
             <BrowserRouter>
-                <div className={styles.dialogList}>
+                <DialogList>
                     {DialogItems}
-                </div>
+                </DialogList>
 
-                {/* < Route path="/dialogs/Anton" render={() => <Anton />} />
-                < Route path="/dialogs/Max" component={Max} />
-                < Route path="/dialogs/Diman" component={(allDialogs) => (
-                    <Message></Message>
-                )} /> */}
                 <DialogColumn>
-                    {Routers}
-                    <SectionSentingMessage>
-                        <textarea></textarea>
-                        <button>Send</button>
-                    </SectionSentingMessage>
+                {Routs}
+                    <MessageSentingSection>
+                        <textarea   onChange={typingMessage} 
+                                    value={props.state.contantMessage} 
+                                    placeholder="Enter your message:" />
+                        <button onClick={sendMessage}>Send</button>
+                    </MessageSentingSection>
                 </DialogColumn>
 
             </BrowserRouter>
-        </div>
+        </MainDialogWindow>
     )
 }
 

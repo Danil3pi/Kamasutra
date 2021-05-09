@@ -4,7 +4,7 @@ import styles from './PersonPage.module.css';
 import PersonInfo from './PersonInfo/PersonInfo.jsx'
 import MyPosts from './MyPosts/MyPosts.jsx';
 
-import {addPostActionCreator, updatePostTextActionCreator} from '../../../redux/store';
+import {addPostActionCreator, updatePostTextActionCreator} from '../../../redux/profile-reducer';
  
 const PersonPage = (props) => {
     let newPost = React.createRef();

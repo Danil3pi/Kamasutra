@@ -14,7 +14,7 @@ const Post = (props) => {
             <div>{props.post.message}</div>
             <div >
                 <button onClick={() => IncrementLikes(++count)}> {/* Даня привыкай это другой язык не нунжно сравнивать его с другими*/}
-                    <img src='https://im0-tub-ru.yandex.net/i?id=aa6332ad06608319e37ec717fd8d35f7&n=13' />
+                    <img alt="ava" src='https://im0-tub-ru.yandex.net/i?id=aa6332ad06608319e37ec717fd8d35f7&n=13' />
                 </button>
                 {count}
             </div>

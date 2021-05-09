@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, Route, BrowserRouter, Router } from 'react-router-dom';
+import { Link, Route, BrowserRouter } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { createActionTyping, createActionSendingMessage } from '../../redux/store'
+import { createActionTyping, createActionSendingMessage } from '../../redux/dialogs-reducer'
 
 //Если прописать BrowserRouter перед Route, то смены е будет и будет просто отображать пустая страница
 // А ткак нормаьно!
@@ -46,7 +46,7 @@ const DialogItem = (props) => {
     return (
         <div>
             <DialigWithSmb to={"/dialogs/" + props.to}>
-                <img src={props.ava} />
+                <img src={props.ava} alt="ava"/>
                 {props.name}
             </DialigWithSmb>
         </div>

@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-const TYPING_NEW_MESSAGE = 'TYPING-NEW-MESSAGE';
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
 
 let store = {
     // Privat variable
@@ -52,8 +50,8 @@ let store = {
                         { text: 'на Слияние', type: 'incoming' },
                     ]
                 },
-                { id: "Travov", name: "Travov", ava: "https://clck.ru/UNMjL", messages:[]},
-                { id: "Vova", name: "Vova", ava: "https://clck.ru/UNMjL", messages:[] },
+                { id: "Travov", name: "Travov", ava: "https://clck.ru/UNMjL", messages: [] },
+                { id: "Vova", name: "Vova", ava: "https://clck.ru/UNMjL", messages: [] },
             ],
             contantMessage: '',
         },
@@ -93,59 +91,14 @@ let store = {
     },
 
     dispatch(action) {
-        //debugger;
-        switch (action.type) {
-            case ADD_POST: {
-                if (this._state.ProfilePage.newPostText !== '') {
-                    let post = {
-                        message: this._state.ProfilePage.newPostText,
-                        likes_count: 0,
-                    };
 
-                    this._state.ProfilePage.newPostText = "";
+        this._state.ProfilePage = profileReducer(this._state.ProfilePage, action);
+        this._state.DialogPage = dialogsReducer(this._state.DialogPage, action);
 
-                    this._state.ProfilePage.posts.push(post);
-
-                    this._rerenderEntireTree(this._state);
-                }
-            }; break;
-
-            case UPDATE_POST_TEXT: {
-                this._state.ProfilePage.newPostText = action.newPostText;
-                this._rerenderEntireTree(this.getState());
-            }; break;
-
-            case SEND_MESSAGE: {
-                debugger;
-                let newMessage = {
-                    text: this._state.DialogPage.contantMessage,
-                    type: 'answer',
-                };
-
-                for (let friend of this._state.DialogPage.dialogs){
-                    if(friend.id === action.friend){
-                        friend.messages.push(newMessage);
-                    }
-                }
-
-                this._state.DialogPage.contantMessage = '';
-                this._rerenderEntireTree(this.getState());
-            }; break;
-
-            case TYPING_NEW_MESSAGE: {
-                this._state.DialogPage.contantMessage = action.newTextMessage;
-
-                this._rerenderEntireTree(this.getState());
-            }; break;
-        }
+        this._rerenderEntireTree(this.getState());
     },
 
-}
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updatePostTextActionCreator = (newPostText) => ({ type: UPDATE_POST_TEXT, newPostText });
-export const createActionTyping = (newTextMessage) => ({type: 'TYPING-NEW-MESSAGE', newTextMessage});
-export const createActionSendingMessage = (friend) => ({type: 'SEND-MESSAGE', friend});
+};
 
 window.store = store;
 

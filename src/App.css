@@ -1,5 +1,5 @@
 /* Wrapper */
-.app-wrapper{
+.app-wrapper{ /* почему не применился этот стиль?*/
   display: grid; /**/
 
   grid-template-areas: 

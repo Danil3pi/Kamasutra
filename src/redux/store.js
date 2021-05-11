@@ -84,7 +84,7 @@ let store = {
     _rerenderEntireTree() {
     },
 
-    publisher(observer) {
+    subscribe(observer) {
         //А rerender становиться фунцией из index.js единожды? Или каждый раз вызывается при новой отрисовке?
         //console.log('publisher');
         this._rerenderEntireTree = observer;

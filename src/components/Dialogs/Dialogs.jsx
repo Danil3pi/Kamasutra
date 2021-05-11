@@ -99,23 +99,6 @@ const Dialogs = (props) => {
     let DialogItems = props.state.dialogs.map(dialog => (<DialogItem to={dialog.id}
         name={dialog.name} ava={dialog.ava}></DialogItem>));
 
-    // let Routers = Object.keys(props.dialogs).map((item) => (
-    //     < Route path={`/dialogs/${item}`} render={() => (
-    //         props.dialogs[item].map((mess) => (
-    //             <Message messageType={mess.type}>{mess.text}</Message>
-    //         ))
-    //     )} />
-    // ))
-    //let Routers = [];
-
-    // debugger;
-    // for (let item of props.state.dialogs) {
-    //     for ( let message of item['messages']) {
-    //         console.log(message);
-    //     }
-    // }
-
-
     let Routs = props.state.dialogs.map((item, index) => (
         <Route key={index} path={`/dialogs/${item.name}`} render={() =>(
                 item.messages.map((message) => (
@@ -134,17 +117,18 @@ const Dialogs = (props) => {
         const friendName = path.split('').splice(lastIndexSlash + 1).join('');
 
         return friendName;
-    }
+    };
 
     const typingMessage = (event) => {
         let newTextMessage = event.target.value;
         props.dispatch(createActionTyping(newTextMessage));
-    }
+    };
 
     const sendMessage = () => {
         const friend = getGeter();
         props.dispatch(createActionSendingMessage(friend))
-    }
+    };
+    
     return (
         <MainDialogWindow>
             <BrowserRouter>

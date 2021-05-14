@@ -19,12 +19,17 @@ const PersonPage = (props) => {
     };
 
     return (
-        <div className={styles.contant_main}>
+        <div>
 
             <PersonInfo />
+
+            
             {/* Метод onchange срабатывает каждый раз при попытке изменить содержисое textarea */}
             <textarea onChange={changeAreaText} ref={newPost} value={props.profileData.newPostText}/>
+            {/* Нужно сделать отдельную кнопку как в туториале*/}
             <button onClick={ addPost } className={styles.submit}>Add Post</button>
+
+
             <MyPosts posts={props.profileData.posts}/>
         </div>
     );

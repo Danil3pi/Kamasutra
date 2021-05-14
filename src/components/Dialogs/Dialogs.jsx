@@ -3,11 +3,6 @@ import { Link, Route, BrowserRouter } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { createActionTyping, createActionSendingMessage } from '../../redux/dialogs-reducer'
-
-//Если прописать BrowserRouter перед Route, то смены е будет и будет просто отображать пустая страница
-// А ткак нормаьно!
-
 const DialigWithSmb = styled(Link)`
     overflow: hidden;
     
@@ -46,7 +41,7 @@ const DialogItem = (props) => {
     return (
         <div>
             <DialigWithSmb to={"/dialogs/" + props.to}>
-                <img src={props.ava} alt="ava"/>
+                <img src={props.ava} alt="ava" />
                 {props.name}
             </DialigWithSmb>
         </div>
@@ -96,39 +91,27 @@ const DialogList = styled.div`
 
 const Dialogs = (props) => {
 
-    let DialogItems = props.state.dialogs.map(dialog => (<DialogItem to={dialog.id}
+    let DialogItems = props.dialogs.map(dialog => (<DialogItem to={dialog.id}
         name={dialog.name} ava={dialog.ava}></DialogItem>));
 
-    let Routs = props.state.dialogs.map((item, index) => (
-        <Route key={index} path={`/dialogs/${item.name}`} render={() =>(
-                item.messages.map((message) => (
-                    <Message messageType={message.type}>{message.text}</Message>))
-                )
-             } 
+    let Routs = props.dialogs.map((item, index) => (
+        <Route key={index} path={`/dialogs/${item.name}`} render={() => (
+            item.messages.map((message) => (
+                <Message messageType={message.type}>{message.text}</Message>))
+        )
+        }
         />
-    )); 
+    ));
 
-    const getGeter = () => {
-        //Если на страниуе сообщений можно будет переходить еще на другие страницы, то это уже будет индекс не последненго слеша.
-        //И имя пользователя будет уже другое
-        let path = window.location.pathname;
-        const lastIndexSlash = path.lastIndexOf('/');
-
-        const friendName = path.split('').splice(lastIndexSlash + 1).join('');
-
-        return friendName;
-    };
-
-    const typingMessage = (event) => {
+    const onMessageTyping = (event) => {
         let newTextMessage = event.target.value;
-        props.dispatch(createActionTyping(newTextMessage));
+        props.supdateText(newTextMessage);
     };
 
-    const sendMessage = () => {
-        const friend = getGeter();
-        props.dispatch(createActionSendingMessage(friend))
+    const onMessageSend = () => {
+        props.sendMessage();
     };
-    
+
     return (
         <MainDialogWindow>
             <BrowserRouter>
@@ -137,12 +120,12 @@ const Dialogs = (props) => {
                 </DialogList>
 
                 <DialogColumn>
-                {Routs}
+                    {Routs}
                     <MessageSentingSection>
-                        <textarea   onChange={typingMessage} 
-                                    value={props.state.contantMessage} 
-                                    placeholder="Enter your message:" />
-                        <button onClick={sendMessage}>Send</button>
+                        <textarea onChange={onMessageTyping}
+                            value={props.contantMessage}
+                            placeholder="Enter your message:" />
+                        <button onClick={onMessageSend}>Send</button>
                     </MessageSentingSection>
                 </DialogColumn>
 

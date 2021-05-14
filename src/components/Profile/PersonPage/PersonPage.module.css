@@ -1,33 +1,3 @@
-/* Profile */
-
-.contant_header{
-
-    background: url('https://static.tildacdn.com/tild6234-3134-4339-a637-623532346238/Untitled_30.png') center no-repeat;
-    background-size: cover;
-  
-    height: 200px;
-}
-  
-.profile_contant{
-    position: relative;
-  
-    padding: 50px 230px;
-  }
-  
-  .ava{
-    position: absolute;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
-  }
-  
-  .ava img{
-    border-radius: 50%;
-  
-    width: 150px;
-    height: 150px;
-  }
-
 /* ============================================*/
 textarea {
 	/* = Убираем скролл */

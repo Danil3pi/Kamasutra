@@ -1,0 +1,13 @@
+/* Contant */
+.contant{
+    grid-area: contant;
+  
+    background-color: #00AE68;
+  }
+
+  .contant_header{
+    background: url('https://static.tildacdn.com/tild6234-3134-4339-a637-623532346238/Untitled_30.png') center no-repeat;
+    background-size: cover;
+  
+    height: 200px;
+}
